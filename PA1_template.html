@@ -322,7 +322,7 @@ qplot(DailyStep, data=dt.fill.DailyStep, geom=&quot;histogram&quot;,binwidth=100
 
 <h2>Activity patterns at weekdays and weekends.</h2>
 
-<h4>1. Create a new factor variable in the dataset with two levels ¨C &#39;weekday&#39; and &#39;weekend&#39; indicating whether a given date is a weekday or weekend day.</h4>
+<h4>1. Create a new factor variable in the dataset with two levels: &#39;weekday&#39; and &#39;weekend&#39; indicating whether a given date is a weekday or weekend day.</h4>
 
 <pre><code class="r">dt[,WeekDay:=weekdays(as.Date(dt$date))]
 dt[WeekDay==&quot;Sunday&quot; | WeekDay==&quot;Saturday&quot;,WD:=&quot;weekend&quot;]
