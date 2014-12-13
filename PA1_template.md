@@ -138,7 +138,7 @@ dt.fill.DailyStep[,.(Mean=mean(DailyStep,na.rm=T),Median=median(DailyStep,na.rm=
 **According to the graph above, we can see that there are no obvious differences by filling the missing values.**
 
 ## Activity patterns at weekdays and weekends.
-#### 1. Create a new factor variable in the dataset with two levels ¨C ¡°weekday¡± and ¡°weekend¡± indicating whether a given date is a weekday or weekend day.
+#### 1. Create a new factor variable in the dataset with two levels ¨C 'weekday' and 'weekend' indicating whether a given date is a weekday or weekend day.
 
 ```r
 dt[,WeekDay:=weekdays(as.Date(dt$date))]
