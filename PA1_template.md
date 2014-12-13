@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -39,7 +44,7 @@ dt.DailyStep <- dt[,.(DailyStep=sum(steps)),by=date]
 qplot(DailyStep, data=dt.DailyStep, geom="histogram",binwidth=1000)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 #### 2. The mean and median total number of steps taken per day.
 
@@ -61,7 +66,7 @@ qplot(x=interval,y=AverageSteps,data=dt.DailyActivity,geom="line") +
   ylab("Average number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
 #### 2. The 5-minute interval, on average across all the days in the dataset, that contains the maximum number of steps:  
 
@@ -120,7 +125,7 @@ qplot(DailyStep, data=dt.fill.DailyStep, geom="histogram",binwidth=1000) +
   ylab("Frequency")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 
 ```r
 dt.fill.DailyStep[,.(Mean=mean(DailyStep,na.rm=T),Median=median(DailyStep,na.rm=T))]
@@ -133,7 +138,7 @@ dt.fill.DailyStep[,.(Mean=mean(DailyStep,na.rm=T),Median=median(DailyStep,na.rm=
 **According to the graph above, we can see that there are no obvious differences by filling the missing values.**
 
 ## Activity patterns at weekdays and weekends.
-#### 1. Create a new factor variable in the dataset with two levels â€“ â€œweekdayâ€ and â€œweekendâ€ indicating whether a given date is a weekday or weekend day.
+#### 1. Create a new factor variable in the dataset with two levels ¨C ¡°weekday¡± and ¡°weekend¡± indicating whether a given date is a weekday or weekend day.
 
 ```r
 dt[,WeekDay:=weekdays(as.Date(dt$date))]
@@ -166,4 +171,4 @@ qplot(x=interval,y=AverageSteps,data=dt.DailyActivity.WD,geom="line") +
   theme(strip.background=element_rect(fill="pink"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
