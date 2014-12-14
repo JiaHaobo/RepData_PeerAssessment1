@@ -86,7 +86,7 @@ dt
 ```
 #### 2. The panel plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days.
 ```{r}
-dt.DailyActivity.WD <- dt[,.(AverageSteps=mean(steps,na.rm=T),WD=WD),by=interval]
+dt.DailyActivity.WD <- dt[,.(AverageSteps=mean(steps,na.rm=T),WD=WD),by=.(interval,WD)]
 qplot(x=interval,y=AverageSteps,data=dt.DailyActivity.WD,geom="line") +
   facet_wrap(~ WD,nrow=2) +
   ylab("Average Number of Steps") +

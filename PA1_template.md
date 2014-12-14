@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -44,7 +39,7 @@ dt.DailyStep <- dt[,.(DailyStep=sum(steps)),by=date]
 qplot(DailyStep, data=dt.DailyStep, geom="histogram",binwidth=1000)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
 #### 2. The mean and median total number of steps taken per day.
 
@@ -66,7 +61,7 @@ qplot(x=interval,y=AverageSteps,data=dt.DailyActivity,geom="line") +
   ylab("Average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
 
 #### 2. The 5-minute interval, on average across all the days in the dataset, that contains the maximum number of steps:  
 
@@ -125,7 +120,7 @@ qplot(DailyStep, data=dt.fill.DailyStep, geom="histogram",binwidth=1000) +
   ylab("Frequency")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
 
 ```r
 dt.fill.DailyStep[,.(Mean=mean(DailyStep,na.rm=T),Median=median(DailyStep,na.rm=T))]
@@ -164,11 +159,11 @@ dt[,WeekDay:=NULL]
 #### 2. The panel plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days.
 
 ```r
-dt.DailyActivity.WD <- dt[,.(AverageSteps=mean(steps,na.rm=T),WD=WD),by=interval]
+dt.DailyActivity.WD <- dt[,.(AverageSteps=mean(steps,na.rm=T),WD=WD),by=.(interval,WD)]
 qplot(x=interval,y=AverageSteps,data=dt.DailyActivity.WD,geom="line") +
   facet_wrap(~ WD,nrow=2) +
   ylab("Average Number of Steps") +
   theme(strip.background=element_rect(fill="pink"))
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
